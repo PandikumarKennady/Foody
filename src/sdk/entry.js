@@ -1,6 +1,6 @@
 /* eslint-disable */
 import * as Utils from "@contentstack/utils";
-import ContentstackLivePreview from "@contentstack/live-preview-utils";
+// import ContentstackLivePreview from "@contentstack/live-preview-utils";
 import {
   customHostUrl,
   initializeContentStackSdk,
@@ -26,14 +26,14 @@ if (customHostBaseUrl && isValidCustomHostUrl(customHostBaseUrl)) {
 }
 
 // Setting Live Preview if enabled
-ContentstackLivePreview.init({
-  stackSdk: Stack,
-  clientUrlParams: {
-    host: REACT_APP_CONTENTSTACK_APP_HOST,
-  },
-}).catch((error) => console.error(error));
+// ContentstackLivePreview.init({
+//   stackSdk: Stack,
+//   clientUrlParams: {
+//     host: REACT_APP_CONTENTSTACK_APP_HOST,
+//   },
+// }).catch((error) => console.error(error));
 
-export const { onEntryChange } = ContentstackLivePreview;
+// export const { onEntryChange } = ContentstackLivePreview;
 
 const renderOption = {
   span: (node, next) => next(node.children),

@@ -2,7 +2,7 @@ import { getEntry, getEntryByUrl } from "../sdk/entry";
 import { addEditableTags } from "@contentstack/utils";
 
 
-const liveEdit = process.env.REACT_APP_CONTENTSTACK_LIVE_EDIT_TAGS === "true";
+// const liveEdit = process.env.REACT_APP_CONTENTSTACK_LIVE_EDIT_TAGS === "true";
 
 export const getNavBarRes = async() =>{
 
