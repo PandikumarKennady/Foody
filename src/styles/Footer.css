@@ -1,0 +1,105 @@
+footer {
+    padding: 20px;
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+  }
+  
+  footer h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  footer section {
+    display: flex;
+    flex-wrap: wrap; /* Allows the sections to wrap on smaller screens */
+    gap: 20px;
+    justify-content: space-between;
+  }
+  
+  footer aside {
+    flex: 1 1 calc(25% - 20px); /* Divide into four equal sections */
+    min-width: 200px; /* Ensure minimum width for small screens */
+  }
+  
+  footer aside h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    text-align: start;
+    padding-left: 10px;
+  }
+  
+  footer aside ul {
+    padding-left: 20px;
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Make listings vertical */
+    gap: 5px; /* Space between list items */
+    align-items: flex-start;
+  }
+  
+  footer aside ul li {
+    margin: 5px 0;
+  }
+
+  footer aside li:hover{
+    
+  }
+  
+  footer aside ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1rem;
+  }
+  
+  footer aside ul a img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  footer aside ul a {
+    display: inline-flex;
+    align-items: flex-start;
+    margin: 5px 0;
+    text-decoration: none;
+  }
+  
+  footer hr {
+    margin: 20px 0;
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+  }
+  
+  footer p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+  }
+
+  .social {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  @media (max-width: 768px) {
+    footer section {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    footer aside {
+      flex: 1 1 100%;
+    }
+  
+    footer aside ul {
+      display: flex;
+      flex-direction: column; /* Ensure vertical listings remain on smaller screens */
+    }
+  }
+  

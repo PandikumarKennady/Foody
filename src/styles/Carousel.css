@@ -1,0 +1,88 @@
+/* CSS for Carousel Component */
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .carousel-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .carousel-title {
+    position: absolute;
+    left: 20px;
+    top: 10%;
+    margin-bottom: 30%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .carousel-features {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0;
+    list-style-type: none;
+    margin-top: 70px ;
+  }
+  
+  .carousel-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .carousel-feature:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .carousel-feature img {
+        width: 30px; /* Set the width for all images */
+        /* border-radius: 5px; Optional: Adds rounded corners */
+        /* object-fit: cover; Ensures the image doesn't stretch and maintains its aspect ratio */
+        /* display: block; Ensures consistent block-level alignment */
+  }
+  
+  .carousel-feature p {
+    margin: 0;
+    font-size: 1rem;
+    color: #fff;
+  }
+  
+  @media (max-width: 768px) {
+    .carousel-image {
+      height: 300px;
+    }
+  
+    .carousel-title {
+      font-size: 1.5rem;
+    }
+  
+    .carousel-feature img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  

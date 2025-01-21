@@ -1,0 +1,57 @@
+*{
+    font-family: "Poppins", serif;
+}
+
+/* nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+    list-style-type: none;
+}
+
+li a{
+    text-decoration: none;
+    padding: 5%;
+} */
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Space between <h1> and <ul> */
+    align-items: center; /* Vertically align items */
+    padding: 10px 20px; /* Optional padding around the nav */
+    background-color: #fff;
+}
+
+ul {
+    display: flex; /* Arrange <li> items in a row */
+    gap: 20px; /* Add spacing between <li> items */
+    padding: 0; /* Remove extra padding around <ul> */
+    margin: 0; /* Remove default margin of <ul> */
+    align-items: center; /* Vertically align <li> items */
+    list-style-type: none; /* Remove bullets */
+}
+
+li a {
+    text-decoration: none; /* Remove underline from links */
+    /* padding: 5px 10px; Add consistent padding */
+    color: inherit; /* Inherit text color */
+    /* display: block; Ensure padding applies properly */
+}
+
+h1 {
+    margin: 0; /* Remove default margin from <h1> */
+    font-size: 1.5rem; /* Adjust size as needed */
+}
+
+nav ul li:hover{
+    background-color: beige;
+    padding: 5px;
+    border-radius: 4px;
+}
