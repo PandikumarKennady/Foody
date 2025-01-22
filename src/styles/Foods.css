@@ -1,0 +1,102 @@
+/* Main container for all food cards */
+.food-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+  
+  /* Individual food card */
+  .food-card {
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Fixed card width */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Adjust to desired ratio, e.g., 16:9 */
+    overflow: hidden;
+    background-color: #f4f4f4; /* Placeholder for missing images */
+  }
+
+  .food-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images fit the area without distortion */
+}
+ 
+  
+  /* Food details section (below the image) */
+  .food-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Left section aligned to the left */
+  .left-section {
+    text-align: left;
+  }
+  
+  .dish-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .mess-name {
+    font-size: 1em;
+    color: #555;
+  }
+  
+  .mess-address {
+    font-size: 0.9em;
+    color: #888;
+  }
+  
+  /* Right section aligned to the right */
+  .right-section {
+    text-align: right;
+  }
+  
+  .price {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .ratings {
+    font-size: 0.9em;
+    color: #f39c12;
+  }
+  
+  .avail-time {
+    font-size: 0.8em;
+    color: #777;
+  }
+  
+  /* Categories styled as a horizontal list */
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    border-top: 1px solid #eee;
+  }
+  
+  .category-item {
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    color: #333;
+  }
+  

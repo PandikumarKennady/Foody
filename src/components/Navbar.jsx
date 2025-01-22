@@ -25,7 +25,7 @@ export default function Navbar(){
             <h1>{navBar.title}</h1>
             <ul>
                 <li>
-                    <Link to={"/about"}>About Me</Link>
+                    <Link to={"/"}>Home</Link>
                 </li>
                     <li><a href={navBar?.order?.href}>{navBar?.order?.title}</a></li>
                     <li><a href={navBar.add_a_restaurant_?.href}>{navBar.add_a_restaurant_?.title}</a></li>

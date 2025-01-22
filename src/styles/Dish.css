@@ -1,0 +1,134 @@
+/* Container styling */
+.dish-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header */
+  .dish-header {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Main content sections */
+  .dish-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Left Section (Image) */
+  .left-section {
+    flex: 5 2;
+  }
+  
+  .dish-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Right Section */
+  .right-sections {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Parallel Section */
+  .parallel-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .left-parallel {
+    text-align: left;
+  }
+  
+  .right-parallel {
+    text-align: right;
+  }
+  
+  /* Description and Ingredients */
+  .description-section {
+    margin-top: 20px;
+  }
+  
+  .description-section h3 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* Categories */
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .category-item {
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  /* Price and Quantity */
+  .price-quantity-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .quantity-button {
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .quantity-button:hover {
+    background-color: #ff5722;
+  }
+  
+  .quantity {
+    font-size: 1rem;
+  }
+  
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Order Button */
+  .order-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .order-button:hover {
+    background-color: darkred;
+  }
+  

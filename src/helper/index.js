@@ -37,3 +37,26 @@ export const getResponse = async(uid) =>{
   );
   return response[0][0];
 }
+
+export const getFoodResponse = async() =>{
+  const response = (
+    await getEntry({
+      contentTypeUid:'foods',
+      referenceFieldPath:[],
+      jsonRtePath:[]
+    })
+  );
+  return response[0];
+}
+
+export const getCardDishResponse = async(url) =>{
+  const response = (
+    await getEntryByUrl({
+      contentTypeUid:'foods',
+      entryUrl: '/foods/'+url,
+      referenceFieldPath:[],
+      jsonRtePath:[]
+    })
+  );
+  return response[0];
+}
