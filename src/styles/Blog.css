@@ -1,0 +1,88 @@
+/* Blog container */
+.blog-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Blog title */
+  .blog-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #222;
+  }
+  
+  /* Reviews section */
+  .reviews-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Individual review card */
+  .review-card {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Review text (in quotes) */
+  .review-text {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #555;
+    position: relative;
+    margin: 0;
+  }
+  
+  /* Ratings in stars */
+  .review-ratings {
+    font-size: 1.2rem;
+    color: #ffcc00;
+    margin: 0;
+  }
+  
+  /* Reviewer info section */
+  .reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  /* Profile image (rounded) */
+  .reviewer-profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+  }
+  
+  /* Reviewer details */
+  .reviewer-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .reviewer-name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+  }
+  
+  .reviewer-location {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0;
+  }
+  

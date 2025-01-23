@@ -1,0 +1,66 @@
+.contact-info {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.brand-details {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.brand-details h1 {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.brand-details address {
+    font-style: normal;
+    color: #555;
+    font-size: 16px;
+}
+
+.contact-details h3 {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.contact-list li .icon {
+    margin-right: 10px;
+    color: orange;
+    font-size: 18px;
+}
+
+.contact-list li:not(:last-child) {
+    border-bottom: 1px dashed #ddd;
+}
+
+.contact-list li:hover {
+    color: #000;
+    background: #f1f1f1;
+    border-radius: 4px;
+}

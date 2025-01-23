@@ -138,7 +138,7 @@ export default function Dish() {
         </h3>
       </div>
 
-      {/* Order Button */}
+
       <button className="order-button">Order</button>
     </div>
   </div>

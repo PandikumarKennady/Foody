@@ -20,23 +20,25 @@ export default function Collections() {
   }, [])
 
   return (
-    <article>
-      <h1>{collection?.title}</h1>
-      <p>{collection?.description}</p>
-      <section>
-        {collection?.category?.map((category, index) => (
-          <aside key={index}>
-            <Link to={category?.category_link?.href}>
-              <img
-                src={category?.image?.url}
-                alt={category?.category_link?.title}
-              />
-            </Link>
-            <h3>{category?.category_link?.title}</h3>
-          </aside>
-        ))}
-      </section>
-    </article>
+    <article className="collection-container">
+    <h1 className="collection-title">{collection?.title}</h1>
+    <p className="collection-description">{collection?.description}</p>
+    <section className="category-section">
+      {collection?.category?.map((category, index) => (
+        <aside key={index} className="category-card">
+          <Link to={category?.category_link?.href} className="category-link">
+            <img
+              src={category?.image?.url}
+              alt={category?.category_link?.title}
+              className="category-image"
+            />
+          </Link>
+          <h3 className="category-title">{category?.category_link?.title}</h3>
+        </aside>
+      ))}
+    </section>
+  </article>
+  
   );
 
 }
