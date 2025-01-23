@@ -51,10 +51,8 @@ export default function Dish() {
   }
 
   const handleInputChange = (e) =>{
-    const {name, value} 
+    console.log('changed');
   }
-
-)
 
   return (
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import '../styles/Report.css'
 import axios from 'axios'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const Report = () => {
 
