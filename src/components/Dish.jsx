@@ -38,45 +38,11 @@ export default function Dish() {
 
   }
 
+  function confirmOrder(){
+    console.log('clicked');
+  }
+
   return (
-    // <article>
-    //   <h1>Discover our Dishes!</h1>
-    //   <img src={dishes?.dish_image?.url} alt={dishes?.dish_image?.filename} />
-    //   <h2>{dishes?.title}</h2>
-    //   <h3>{dishes?.mess_name}</h3>
-    //   <address>{dishes?.mess_address}</address>
-
-    //   <section>
-    //     <p>{dishes?.ratings?.value}</p>
-    //     <p>{dishes?.avail_from} - {dishes?.avail_until}</p>
-    //   </section>
-    //   <section>
-    //     <h3>Description</h3>
-    //     <p>{dishes?.description}</p>
-
-    //     <h3>Main Ingredients</h3>
-    //     <p>{dishes?.ingredients}</p>
-    //   </section>
-    //   <ul>
-    //     {dishes?.category?.map((dish, idx) => {
-    //       return (
-    //         <li key={idx}><h4>#{dish}</h4></li>
-    //       );
-    //     })}
-    //   </ul>
-
-    //   <button onClick={handleIncrement}>
-    //     <FaPlus />
-    //   </button>
-    //   <p>Quantity: {nos}</p>
-    //   <button onClick={handleDecrement}>
-    //     <FaMinus />
-    //   </button>
-
-    //   <h3>Price: {nos === (0 || 1) ? dishes?.rate : dishes?.rate * nos} </h3>
-
-    //   <button>Order</button>
-    // </article>
 
     <article className="dish-container">
   <h1 className="dish-header">Discover our Dishes!</h1>
@@ -139,7 +105,7 @@ export default function Dish() {
       </div>
 
 
-      <button className="order-button">Order</button>
+      <button className="order-button"  onClick={confirmOrder}>Order</button>
     </div>
   </div>
 </article>
