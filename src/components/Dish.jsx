@@ -8,6 +8,14 @@ export default function Dish() {
   const { id } = useParams();
   const [nos, setNos] = useState(1)
 
+  const [showModel, setShowModel] = useState(false);
+  const [form, setForm] = useState({
+    username:"",
+    email:"",
+    phone:""
+  });
+
+
 
   const [dishes, setDishes] = useState({});
 
@@ -39,8 +47,14 @@ export default function Dish() {
   }
 
   function confirmOrder(){
-    console.log('clicked');
+    setShowModel(true);
   }
+
+  const handleInputChange = (e) =>{
+    const {name, value} 
+  }
+
+)
 
   return (
 
@@ -108,6 +122,11 @@ export default function Dish() {
       <button className="order-button"  onClick={confirmOrder}>Order</button>
     </div>
   </div>
+
+  {/* Form for Confirming Order*/ }
+  {
+
+  }
 </article>
 
   );
