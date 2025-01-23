@@ -28,7 +28,9 @@ export default function Navbar(){
                     <Link to={"/"}>Home</Link>
                 </li>
                     <li><a href={navBar?.order?.href}>{navBar?.order?.title}</a></li>
-                    <li><a href={navBar.add_a_restaurant_?.href}>{navBar.add_a_restaurant_?.title}</a></li>
+                    {/* <li><a href={navBar.add_a_restaurant_?.href}>{navBar.add_a_restaurant_?.title}</a></li> */}
+                    <li><a href='/about'>About</a></li>
+
                      <li><a href={navBar.login?.href}>{navBar.login?.title}</a></li>
                     <li><a href={navBar.signup?.href}>{navBar.signup?.title}</a></li>
             </ul>

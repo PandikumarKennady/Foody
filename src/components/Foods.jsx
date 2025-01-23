@@ -14,12 +14,9 @@ export default function Foods() {
     async function getFoodsInfo() {
         await getFoodResponse().then(res => {
             setFood(res);
-        
             if (category !== null){
-                console.log(category);
                 filterFoods(res);
             }
-            console.log(res);
         }).catch(err => {
             console.log(err);
         })
@@ -30,7 +27,6 @@ export default function Foods() {
         const newFoods = res.filter((dish) => {
             return dish['category'].includes(category);
         })
-        console.log(newFoods);
         if (newFoods !== undefined || newFoods.length!==0){
             setFood(newFoods)
         }
