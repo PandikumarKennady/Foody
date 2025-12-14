@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { getCarouselItemsWithVariant, getCarouselItems } from "../helper/index";
 import { 
   initializePersonalize, 
@@ -10,7 +10,7 @@ import {
   getRawVariantAliases 
 } from "../services/personalize.service";
 import '../styles/Carousel.css'
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 /**
  * Carousel Component with Contentstack Personalize Edge SDK Integration
@@ -31,6 +31,25 @@ export default function Carousel() {
     const [isQueryParamMode, setIsQueryParamMode] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [currentVariant, setCurrentVariant] = useState('');
+    const [searchParams] = useSearchParams();
+    
+    // Get the city query param to preserve across navigation
+    const cityParam = searchParams.get('city');
+    
+    /**
+     * Build a path with preserved query parameters (specifically 'city')
+     * This ensures personalization is retained when navigating between pages
+     */
+    const buildPath = useMemo(() => {
+        return (basePath) => {
+            if (cityParam) {
+                // Handle paths that already have query params
+                const separator = basePath.includes('?') ? '&' : '?';
+                return `${basePath}${separator}city=${encodeURIComponent(cityParam)}`;
+            }
+            return basePath;
+        };
+    }, [cityParam]);
 
     /**
      * Fetch carousel items from CMS with personalization variant
@@ -42,7 +61,8 @@ export default function Carousel() {
         try {
             // Initialize personalization using Edge SDK
             // Priority: URL query param (?city=tuticorin) -> Edge SDK variants -> IP detection -> localStorage -> default
-            const { city, variantAlias, fromQueryParam, sdkAliases } = await initializePersonalize();
+            // Force refresh to always read current URL query params
+            const { city, variantAlias, fromQueryParam, sdkAliases } = await initializePersonalize({ forceRefresh: true });
             
             setUserCityState(city);
             setIsQueryParamMode(fromQueryParam || false);
@@ -230,7 +250,7 @@ export default function Carousel() {
                 <div className="carousel-empty">
                     <h2>Welcome to Foody</h2>
                     <p>Discover amazing food in {userCity || 'your city'}</p>
-                    <Link to="/foods" className="btn-primary">
+                    <Link to={buildPath("/foods")} className="btn-primary">
                         Explore Menu
                     </Link>
                 </div>
@@ -329,7 +349,7 @@ export default function Carousel() {
                 </p>
 
                 <div className="carousel-cta">
-                    <Link to={currentSlideData.ctaLink || "/foods"} className="btn-primary">
+                    <Link to={buildPath(currentSlideData.ctaLink || "/foods")} className="btn-primary">
                         {currentSlideData.ctaText || "Explore Menu"}
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>

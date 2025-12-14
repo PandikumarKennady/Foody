@@ -20,9 +20,13 @@ export default function Restaurants() {
     }, []);
 
     const initPersonalizationAndFetch = async () => {
-        const { city } = await initializePersonalize();
+        // Force refresh to always read current URL query params
+        // This ensures ?city=tuty works when navigating to this page
+        const { city, fromQueryParam } = await initializePersonalize({ forceRefresh: true });
         setSelectedCity(city);
-        setCityFilter(city); // Default to user's city
+        setCityFilter(city); // Default to user's city from URL or detection
+        
+        console.log(`[Restaurants] Initialized with city: ${city}, fromQueryParam: ${fromQueryParam}`);
         await fetchRestaurants(city);
     };
 
@@ -33,8 +37,11 @@ export default function Restaurants() {
             
             let data;
             if (city && city !== 'all') {
+                console.log(`[Restaurants] Fetching restaurants for city: ${city}`);
                 data = await getRestaurantsByCity(city);
+                console.log(`[Restaurants] Found ${data?.length || 0} restaurants for ${city}`);
             } else {
+                console.log('[Restaurants] Fetching all restaurants');
                 data = await getRestaurants();
             }
             setRestaurants(data);

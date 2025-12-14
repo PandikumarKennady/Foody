@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { getNavBarRes } from '../helper/index';
 import '../styles/Navbar.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 // Custom Logo Component
@@ -49,7 +49,24 @@ export default function Navbar() {
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
     const { user, isAuthenticated, isRestaurantAdmin, logout } = useAuth();
+
+    // Get the city query param to preserve across navigation
+    const cityParam = searchParams.get('city');
+    
+    /**
+     * Build a path with preserved query parameters (specifically 'city')
+     * This ensures personalization is retained when navigating between pages
+     */
+    const buildPath = useMemo(() => {
+        return (basePath) => {
+            if (cityParam) {
+                return `${basePath}?city=${encodeURIComponent(cityParam)}`;
+            }
+            return basePath;
+        };
+    }, [cityParam]);
 
     async function getNavInfo() {
         try {
@@ -97,12 +114,12 @@ export default function Navbar() {
 
     const handleLogout = () => {
         logout();
-        navigate('/');
+        navigate(buildPath('/'));
     };
 
     return (
         <nav className={isScrolled ? 'scrolled' : ''}>
-            <Link to="/" className="logo-link">
+            <Link to={buildPath('/')} className="logo-link">
                 <FoodyLogo />
             </Link>
 
@@ -119,17 +136,17 @@ export default function Navbar() {
 
             <ul className={isMobileMenuOpen ? 'open' : ''}>
                 <li>
-                    <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+                    <Link to={buildPath('/')} className={location.pathname === '/' ? 'active' : ''}>
                         Home
                     </Link>
                 </li>
                 <li>
-                    <Link to="/foods" className={location.pathname === '/foods' || location.pathname.startsWith('/foods/') ? 'active' : ''}>
+                    <Link to={buildPath('/foods')} className={location.pathname === '/foods' || location.pathname.startsWith('/foods/') ? 'active' : ''}>
                         Menu
                     </Link>
                 </li>
                 <li>
-                    <Link to="/restaurants" className={location.pathname === '/restaurants' ? 'active' : ''}>
+                    <Link to={buildPath('/restaurants')} className={location.pathname === '/restaurants' ? 'active' : ''}>
                         Restaurants
                     </Link>
                 </li>
@@ -139,7 +156,7 @@ export default function Navbar() {
                     </li>
                 )}
                 <li>
-                    <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
+                    <Link to={buildPath('/about')} className={location.pathname === '/about' ? 'active' : ''}>
                         About
                     </Link>
                 </li>
@@ -176,11 +193,11 @@ export default function Navbar() {
                                 </div>
                                 <div className="profile-menu-divider"></div>
                                 {isRestaurantAdmin && (
-                                    <Link to="/admin/dashboard" className="profile-menu-item">
+                                    <Link to={buildPath('/admin/dashboard')} className="profile-menu-item">
                                         <span>📊</span> Dashboard
                                     </Link>
                                 )}
-                                <Link to="/orders" className="profile-menu-item">
+                                <Link to={buildPath('/orders')} className="profile-menu-item">
                                     <span>📦</span> My Orders
                                 </Link>
                                 <div className="profile-menu-divider"></div>
@@ -193,12 +210,12 @@ export default function Navbar() {
                 ) : (
                     <>
                         <li>
-                            <Link to="/login" className={`nav-auth-btn login ${location.pathname === '/login' ? 'active' : ''}`}>
+                            <Link to={buildPath('/login')} className={`nav-auth-btn login ${location.pathname === '/login' ? 'active' : ''}`}>
                                 Login
                             </Link>
                         </li>
                         <li>
-                            <Link to="/signup" className="nav-auth-btn signup">
+                            <Link to={buildPath('/signup')} className="nav-auth-btn signup">
                                 Sign Up
                             </Link>
                         </li>

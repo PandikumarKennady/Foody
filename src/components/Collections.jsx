@@ -1,11 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { getResponse } from '../helper/index';
 import '../styles/Collections.css'
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 export default function Collections() {
     const [collection, setCollection] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [searchParams] = useSearchParams();
+    
+    // Get the city query param to preserve across navigation
+    const cityParam = searchParams.get('city');
+    
+    /**
+     * Build a path with preserved query parameters (specifically 'city')
+     */
+    const buildPath = useMemo(() => {
+        return (basePath) => {
+            if (cityParam) {
+                const separator = basePath.includes('?') ? '&' : '?';
+                return `${basePath}${separator}city=${encodeURIComponent(cityParam)}`;
+            }
+            return basePath;
+        };
+    }, [cityParam]);
 
     async function getCollectionInfo() {
         try {
@@ -60,7 +77,7 @@ export default function Collections() {
                 <section className="category-section">
                     {collection?.category?.map((category, index) => (
                         <aside key={index} className="category-card">
-                            <Link to={category?.category_link?.href} className="category-link">
+                            <Link to={buildPath(category?.category_link?.href || '/foods')} className="category-link">
                                 <img
                                     src={category?.image?.url}
                                     alt={category?.category_link?.title}
@@ -85,7 +102,7 @@ export default function Collections() {
             )}
 
             <div className="collection-view-all">
-                <Link to="/foods">
+                <Link to={buildPath("/foods")}>
                     View All Dishes
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M5 12h14M12 5l7 7-7 7"/>

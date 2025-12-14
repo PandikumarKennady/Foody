@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { getResponse } from '../helper/index';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import '../styles/Footer.css'
 
 // Footer Logo Component
@@ -35,6 +35,23 @@ const FooterLogo = () => (
 
 export default function Footer() {
     const [footer, setFooter] = useState({});
+    const [searchParams] = useSearchParams();
+    
+    // Get the city query param to preserve across navigation
+    const cityParam = searchParams.get('city');
+    
+    /**
+     * Build a path with preserved query parameters (specifically 'city')
+     */
+    const buildPath = useMemo(() => {
+        return (basePath) => {
+            if (cityParam) {
+                const separator = basePath.includes('?') ? '&' : '?';
+                return `${basePath}${separator}city=${encodeURIComponent(cityParam)}`;
+            }
+            return basePath;
+        };
+    }, [cityParam]);
 
     async function getFooterInfo() {
         try {
@@ -76,7 +93,7 @@ export default function Footer() {
         <footer>
             <div className="footer-top">
                 <div className="footer-brand">
-                    <Link to="/" className="footer-brand-link">
+                    <Link to={buildPath("/")} className="footer-brand-link">
                         <FooterLogo />
                     </Link>
                     <p className="footer-tagline">

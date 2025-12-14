@@ -272,35 +272,55 @@ async function detectUserCity() {
  * Variant aliases come ONLY from Personalize Edge SDK - no hardcoding
  * 
  * For URL query params, the RAW value is passed directly to the Edge SDK (e.g., "tuty", "chennai")
+ * 
+ * @param {Object} options - Options
+ * @param {boolean} options.forceRefresh - Force re-read URL query params (useful for page navigation)
  */
-export async function initializePersonalize() {
+export async function initializePersonalize(options = {}) {
+  const { forceRefresh = false } = options;
+  
   // Initialize the Edge SDK first
   await initializeEdgeSDK();
 
-  // Always check URL query param first (for experience-based personalization)
+  // ALWAYS check URL query param first (for experience-based personalization)
+  // This ensures query params work even after SPA navigation
   const queryResult = getCityFromQueryParam();
+  
   if (queryResult) {
     const { rawCity, displayCity } = queryResult;
     
-    userCity = displayCity; // For UI display
-    isQueryParamBased = true;
-    isInitialized = true;
+    // Check if city changed from last time (for SPA navigation)
+    const cityChanged = userCity !== displayCity;
     
-    // Pass the RAW query param value directly to Edge SDK - no mapping!
-    // This allows the SDK to match audiences configured with any city value
-    console.log(`[Personalize] Setting SDK attribute with RAW city value: "${rawCity}"`);
-    await setUserAttributesOnEdge({ city: rawCity });
+    if (cityChanged || forceRefresh || !isInitialized) {
+      userCity = displayCity; // For UI display
+      isQueryParamBased = true;
+      isInitialized = true;
+      
+      // Pass the RAW query param value directly to Edge SDK - no mapping!
+      // This allows the SDK to match audiences configured with any city value
+      console.log(`[Personalize] Setting SDK attribute with RAW city value: "${rawCity}"`);
+      await setUserAttributesOnEdge({ city: rawCity });
+      
+      // Get variant aliases from Edge SDK (NOT hardcoded)
+      const sdkAliases = getActiveVariantAliases();
+      variantAlias = Object.values(sdkAliases).join(',') || '';
+      
+      console.log(`[Personalize] Initialized from URL - Raw: "${rawCity}", Display: "${displayCity}", Variant from SDK: ${variantAlias || '(none)'}`);
+    } else {
+      console.log(`[Personalize] Using cached city from URL: ${displayCity}`);
+    }
     
-    // Get variant aliases from Edge SDK (NOT hardcoded)
-    const sdkAliases = getActiveVariantAliases();
-    variantAlias = Object.values(sdkAliases).join(',') || '';
-    
-    console.log(`[Personalize] Initialized from URL - Raw: "${rawCity}", Display: "${displayCity}", Variant from SDK: ${variantAlias || '(none)'}`);
-    return { city: displayCity, rawCity, variantAlias, fromQueryParam: true, sdkAliases };
+    return { city: displayCity, rawCity, variantAlias, fromQueryParam: true, sdkAliases: getActiveVariantAliases() };
   }
   
-  if (isInitialized && !isQueryParamBased) {
-    return { city: userCity, variantAlias, activeVariants };
+  // No query param - check if we should use cached values
+  if (isInitialized && !forceRefresh) {
+    // If previously initialized with query param, but now no query param, reset
+    if (isQueryParamBased) {
+      console.log(`[Personalize] Query param removed, keeping last city: ${userCity}`);
+    }
+    return { city: userCity, variantAlias, activeVariants, fromQueryParam: false };
   }
   
   try {

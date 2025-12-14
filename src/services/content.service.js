@@ -272,9 +272,13 @@ class ContentService {
       }
       
       Query.limit(DEFAULT_LIMIT);
-      Query.where('city', city);
+      
+      // Use case-insensitive regex matching for city filter
+      // This handles variations like "Tuticorin", "tuticorin", "TUTICORIN"
+      Query.regex('city', `^${city}$`, 'i');
       
       const result = await Query.toJSON().find();
+      console.log(`[ContentService] Found ${result[0]?.length || 0} entries for city: ${city}`);
       return result[0] || [];
     } catch (error) {
       console.error(`[ContentService] Error fetching entries by city:`, error);
@@ -480,7 +484,7 @@ function getContentService() {
   return contentServiceInstance;
 }
 
-module.exports = {
+export {
   ContentService,
   initializeContentService,
   getContentService

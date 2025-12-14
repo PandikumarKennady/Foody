@@ -4,22 +4,22 @@
  * Central export for all service modules
  */
 
-const { 
+import { 
   ContentService, 
   initializeContentService, 
   getContentService 
-} = require('./content.service');
+} from './content.service';
 
-const { 
+import { 
   OrderService, 
   getOrderService 
-} = require('./order.service');
+} from './order.service';
 
-const EmailTemplateService = require('./email-template.service');
+import EmailTemplateService from './email-template.service';
 
 // Note: personalize.service.js uses ES modules and is imported directly where needed
 
-module.exports = {
+export {
   // Content Service
   ContentService,
   initializeContentService,

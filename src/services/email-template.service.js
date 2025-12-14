@@ -898,4 +898,15 @@ const EmailTemplateService = {
   generateInfoCard
 };
 
-module.exports = EmailTemplateService;
+export default EmailTemplateService;
+
+export {
+  generateOrderConfirmationEmail,
+  generateOrderStatusEmail,
+  generateWelcomeEmail,
+  generateRestaurantOrderEmail,
+  BRAND,
+  generateHeader,
+  generateFooter,
+  generateInfoCard
+};

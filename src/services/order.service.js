@@ -273,7 +273,7 @@ function getOrderService() {
   return orderServiceInstance;
 }
 
-module.exports = {
+export {
   OrderService,
   getOrderService
 };
