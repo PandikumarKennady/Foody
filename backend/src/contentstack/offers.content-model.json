@@ -1,0 +1,177 @@
+{
+  "content_type": {
+    "title": "Offers",
+    "uid": "offers",
+    "schema": [
+      {
+        "data_type": "text",
+        "display_name": "Title",
+        "uid": "title",
+        "field_metadata": {
+          "_default": true,
+          "version": 3
+        },
+        "mandatory": true,
+        "unique": true,
+        "multiple": false,
+        "non_localizable": false
+      },
+      {
+        "data_type": "text",
+        "display_name": "Code",
+        "uid": "code",
+        "field_metadata": {
+          "description": "Unique offer code (e.g., CHENNAI20)",
+          "default_value": "",
+          "version": 3
+        },
+        "mandatory": true,
+        "unique": true,
+        "multiple": false,
+        "non_localizable": false
+      },
+      {
+        "data_type": "text",
+        "display_name": "Description",
+        "uid": "description",
+        "field_metadata": {
+          "description": "Description of the offer",
+          "default_value": "",
+          "multiline": true,
+          "version": 3
+        },
+        "mandatory": true,
+        "multiple": false,
+        "non_localizable": false,
+        "unique": false
+      },
+      {
+        "data_type": "text",
+        "display_name": "Discount Type",
+        "display_type": "dropdown",
+        "enum": {
+          "advanced": false,
+          "choices": [
+            { "value": "percentage" },
+            { "value": "fixed" }
+          ]
+        },
+        "uid": "discount_type",
+        "field_metadata": {
+          "description": "Type of discount (percentage or fixed amount)",
+          "version": 3
+        },
+        "mandatory": true,
+        "multiple": false,
+        "non_localizable": false,
+        "unique": false
+      },
+      {
+        "data_type": "number",
+        "display_name": "Discount Value",
+        "uid": "discount_value",
+        "field_metadata": {
+          "description": "Discount value (percentage or fixed amount)",
+          "default_value": ""
+        },
+        "mandatory": true,
+        "multiple": false,
+        "non_localizable": false,
+        "unique": false,
+        "min": 0
+      },
+      {
+        "data_type": "number",
+        "display_name": "Min Order Value",
+        "uid": "min_order_value",
+        "field_metadata": {
+          "description": "Minimum order value required",
+          "default_value": ""
+        },
+        "mandatory": false,
+        "multiple": false,
+        "non_localizable": false,
+        "unique": false,
+        "min": 0
+      },
+      {
+        "data_type": "number",
+        "display_name": "Max Discount",
+        "uid": "max_discount",
+        "field_metadata": {
+          "description": "Maximum discount amount (for percentage discounts)",
+          "default_value": ""
+        },
+        "mandatory": false,
+        "multiple": false,
+        "non_localizable": false,
+        "unique": false,
+        "min": 0
+      },
+      {
+        "data_type": "isodate",
+        "display_name": "Valid From",
+        "uid": "valid_from",
+        "field_metadata": {
+          "description": "Start date of the offer"
+        },
+        "mandatory": false,
+        "multiple": false,
+        "non_localizable": false,
+        "unique": false
+      },
+      {
+        "data_type": "isodate",
+        "display_name": "Valid Until",
+        "uid": "valid_until",
+        "field_metadata": {
+          "description": "End date of the offer"
+        },
+        "mandatory": false,
+        "multiple": false,
+        "non_localizable": false,
+        "unique": false
+      },
+      {
+        "data_type": "text",
+        "display_name": "City",
+        "display_type": "dropdown",
+        "enum": {
+          "advanced": false,
+          "choices": [
+            { "value": "Chennai" },
+            { "value": "Coimbatore" },
+            { "value": "All" }
+          ]
+        },
+        "uid": "city",
+        "field_metadata": {
+          "description": "City where the offer is applicable",
+          "version": 3
+        },
+        "mandatory": true,
+        "multiple": false,
+        "non_localizable": false,
+        "unique": false
+      },
+      {
+        "data_type": "boolean",
+        "display_name": "Is Active",
+        "uid": "is_active",
+        "field_metadata": {
+          "description": "Whether the offer is currently active",
+          "default_value": true
+        },
+        "mandatory": true,
+        "multiple": false,
+        "non_localizable": false,
+        "unique": false
+      }
+    ],
+    "options": {
+      "is_page": false,
+      "singleton": false,
+      "title": "title"
+    }
+  }
+}

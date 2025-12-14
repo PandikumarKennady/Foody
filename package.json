@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@contentstack/live-preview-utils": "^3.1.0",
+    "@contentstack/personalize-edge-sdk": "^1.0.19",
     "axios": "^1.7.9",
     "contentstack": "^3.23.0",
     "cra-template": "1.2.0",
+    "dotenv": "^16.3.1",
+    "form-data": "^4.0.0",
     "nodemailer": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -18,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "upload-images": "node scripts/upload-missing-images.js"
   },
   "eslintConfig": {
     "extends": [
@@ -37,5 +41,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Foody - Enhanced food ordering service with Contentstack CMS and MCP integration",
+  "main": "src/index.js",
+  "keywords": [
+    "food-ordering",
+    "contentstack",
+    "mcp",
+    "react",
+    "cms"
+  ],
+  "author": "Foody Team"
 }

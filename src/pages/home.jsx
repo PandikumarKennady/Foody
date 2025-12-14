@@ -1,16 +1,25 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
 import Collections from '../components/Collections';
+import Blog from '../components/Blog';
 import Footer from '../components/Footer';
 
 export default function Home() {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        setIsLoaded(true);
+    }, []);
+
     return (
-        <div>
+        <div className={`app-container ${isLoaded ? 'loaded' : ''}`}>
             <Navbar />
-            <Carousel />
-            <Collections />
+            <main>
+                <Carousel />
+                <Collections />
+                <Blog />
+            </main>
             <Footer />
         </div>
     )

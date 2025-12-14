@@ -1,85 +1,229 @@
-/* Container styling */
+/* 
+ * Report Fraud Form - Modern Dark Theme
+ * Elegant form with consistent styling
+ */
+
 .fraud-report-container {
   max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
-  font-family: Arial, sans-serif;
+  margin: var(--space-3xl) auto;
+  padding: var(--space-2xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Title styling */
+/* Title */
 .fraud-report-title {
+  font-family: var(--font-display);
   font-size: 2rem;
+  font-weight: 700;
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
 }
 
-/* Form styling */
+.fraud-report-title span {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtitle */
+.fraud-report-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+/* Form */
 .fraud-report-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--space-lg);
 }
 
-/* Input fields */
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Input Fields */
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 10px;
+  padding: var(--space-md);
+  font-family: var(--font-body);
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  transition: border-color 0.3s ease;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted);
 }
 
 .form-input:focus,
 .form-textarea:focus {
-  border-color: #007bff;
-  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
 }
 
-/* Textarea styling */
+.form-input:hover,
+.form-textarea:hover {
+  border-color: var(--text-muted);
+}
+
+/* Textarea */
 .form-textarea {
-  min-height: 100px;
-  resize: vertical; /* Allow resizing vertically */
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.6;
 }
 
-/* Submit button */
+/* Submit Button */
 .form-submit-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: var(--space-md) var(--space-xl);
+  font-family: var(--font-body);
   font-size: 1rem;
-  cursor: pointer;
+  font-weight: 600;
   text-transform: uppercase;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  letter-spacing: 1px;
+  color: var(--bg-primary);
+  background: var(--accent-gradient);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.25);
+  margin-top: var(--space-md);
 }
 
 .form-submit-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(255, 107, 53, 0.35);
 }
 
 .form-submit-button:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
 }
 
 .submit-button-text {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-/* Responsive Design */
+/* Success/Error States */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.form-success-icon {
+  font-size: 4rem;
+}
+
+.form-success h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.form-success p {
+  color: var(--text-secondary);
+}
+
+/* Info Card */
+.report-info {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: rgba(255, 107, 53, 0.08);
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+}
+
+.report-info-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.report-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Divider */
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.form-divider span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .fraud-report-container {
+    margin: var(--space-2xl) var(--space-md);
+    padding: var(--space-xl);
+  }
+
+  .fraud-report-title {
+    font-size: 1.75rem;
+  }
+}
+
 @media (max-width: 480px) {
   .fraud-report-container {
-    padding: 15px;
+    margin: var(--space-xl) var(--space-sm);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
   }
 
   .fraud-report-title {
@@ -88,11 +232,11 @@
 
   .form-input,
   .form-textarea {
-    font-size: 0.9rem;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.95rem;
   }
 
   .form-submit-button {
-    padding: 12px;
-    font-size: 0.9rem;
+    padding: var(--space-md);
   }
 }

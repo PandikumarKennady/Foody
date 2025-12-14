@@ -1,0 +1,43 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="50%" stop-color="#FF8C42"/>
+      <stop offset="100%" stop-color="#FFD93D"/>
+    </linearGradient>
+    <linearGradient id="bowlGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#FFF5E6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Main circle background -->
+  <circle cx="32" cy="32" r="30" fill="url(#bgGradient)"/>
+  
+  <!-- Inner decorative ring -->
+  <circle cx="32" cy="32" r="26" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/>
+  
+  <!-- Fork (left side) -->
+  <g stroke="#FFFFFF" stroke-width="3" stroke-linecap="round">
+    <path d="M20 16 L20 28"/>
+    <path d="M17 16 L17 22"/>
+    <path d="M23 16 L23 22"/>
+    <path d="M20 28 L20 48"/>
+  </g>
+  
+  <!-- Steam lines -->
+  <g stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8">
+    <path d="M36 14 Q39 11 36 8"/>
+    <path d="M42 16 Q45 13 42 10"/>
+    <path d="M48 14 Q51 11 48 8"/>
+  </g>
+  
+  <!-- Food bowl -->
+  <ellipse cx="42" cy="36" rx="12" ry="5" fill="rgba(255,255,255,0.2)"/>
+  <path d="M30 36 Q36 30 54 36 Q54 48 42 48 Q30 48 30 36" fill="url(#bowlGradient)"/>
+  
+  <!-- Bowl highlight -->
+  <path d="M34 38 Q38 35 46 38" stroke="rgba(255,107,53,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+</svg>
+
