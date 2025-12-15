@@ -28,5 +28,5 @@ yarn-error.log*
 /backend/build
 /backend/logs
 /backend/logs/*
-/backend/.eng
+*.env
 
